@@ -1,14 +1,17 @@
-#import "Composer.h"
+#import <Foundation/Foundation.h>
+#import <Messages/Messages.h>
+#import <MessageUI/MessageUI.h>
 
+#import <React/RCTBridgeModule.h>
+#import <React/RCTViewManager.h>
 
-@implementation Composer
+@interface RCT_EXTERN_MODULE(Composer, NSObject)
 
-RCT_EXPORT_MODULE()
+RCT_EXTERN_METHOD(canSendMail:(RCTPromiseResolveBlock)resolve
+                  reject:(RCTPromiseRejectBlock)reject);
 
-RCT_EXPORT_METHOD(sampleMethod:(NSString *)stringArgument numberParameter:(nonnull NSNumber *)numberArgument callback:(RCTResponseSenderBlock)callback)
-{
-    // TODO: Implement some actually useful functionality
-    callback(@[[NSString stringWithFormat: @"numberArgument: %@ stringArgument: %@", numberArgument, stringArgument]]);
-}
+RCT_EXTERN_METHOD(send:(NSDictionary *)data
+                  resolve:(RCTPromiseResolveBlock)resolve
+                  reject:(RCTPromiseRejectBlock)reject);
 
 @end
